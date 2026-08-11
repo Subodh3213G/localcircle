@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useAppStore } from '@/store/useAppStore'
 
 export default function LoginPage() {
+  const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSignUp, setIsSignUp] = useState(false)
@@ -26,7 +27,7 @@ export default function LoginPage() {
           email,
           password,
           options: {
-            data: { full_name: email.split('@')[0] }
+            data: { full_name: fullName.trim() || email.split('@')[0] }
           }
         })
         if (error) throw error
@@ -83,6 +84,19 @@ export default function LoginPage() {
         )}
 
         <form onSubmit={handleAuth} className="flex flex-col gap-md">
+          {isSignUp && (
+            <div className="flex flex-col gap-xs">
+              <label className="text-label-md font-label-md text-on-surface">Full Name</label>
+              <input 
+                type="text" 
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="px-md py-sm rounded-lg border border-outline bg-surface text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                placeholder="Jane Doe"
+                required={isSignUp}
+              />
+            </div>
+          )}
           <div className="flex flex-col gap-xs">
             <label className="text-label-md font-label-md text-on-surface">Email Address</label>
             <input 

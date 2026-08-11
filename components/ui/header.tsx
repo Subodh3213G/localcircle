@@ -61,7 +61,7 @@ export default function Header() {
         
         {user ? (
           <div className="flex items-center gap-sm pl-md border-l border-outline-variant">
-            <div className="text-right hidden lg:block">
+            <div className="text-right">
               <p className="text-label-md font-label-md text-on-surface leading-none">{user.full_name}</p>
               <p className="text-caption font-caption text-on-surface-variant">
                 {user.is_verified ? 'Verified Resident' : 'Resident'}
