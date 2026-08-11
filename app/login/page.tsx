@@ -92,7 +92,7 @@ export default function LoginPage() {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 className="px-md py-sm rounded-lg border border-outline bg-surface text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                placeholder="Jane Doe"
+                placeholder="Subodh Yadav"
                 required={isSignUp}
               />
             </div>
