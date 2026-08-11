@@ -70,8 +70,8 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-128px)]">
       <div className="bg-surface-container-lowest p-xl rounded-2xl shadow-md w-full max-w-md border border-outline-variant">
-        <div className="text-center mb-lg">
-          <span className="material-symbols-outlined text-[48px] text-primary mb-sm">waving_hand</span>
+        <div className="text-center mb-lg flex flex-col items-center">
+          <img src="/logo-icon.png" alt="LocalCircle Logo" className="w-16 h-16 rounded-full object-cover mb-sm shadow-sm border border-outline-variant/50" />
           <h1 className="text-headline-lg font-headline-lg text-on-surface">Welcome to LocalCircle</h1>
           <p className="text-body-md text-on-surface-variant mt-xs">Connect with your neighborhood.</p>
         </div>
