@@ -41,8 +41,8 @@ export default function LocationPrompt() {
           const neighborhood = await resolveNeighborhood(longitude, latitude)
           
           if (neighborhood) {
-            setCurrentNeighborhood({ id: neighborhood.id, name: neighborhood.name, slug: neighborhood.slug })
-            await updateUserLocation(longitude, latitude)
+            setCurrentNeighborhood({ id: neighborhood.neighborhood_id, name: neighborhood.neighborhood_name, slug: neighborhood.neighborhood_slug })
+            await updateUserLocation(neighborhood.neighborhood_id, longitude, latitude)
           } else {
             setError('Your location is outside our currently supported neighborhoods. Please check back later!')
           }
