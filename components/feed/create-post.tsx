@@ -12,9 +12,12 @@ export default function CreatePost() {
   
   const fileInputRef = useRef<HTMLInputElement>(null)
 
+  const [error, setError] = useState('')
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
+    setError('')
     const formData = new FormData(e.currentTarget)
     
     try {
@@ -22,9 +25,9 @@ export default function CreatePost() {
       e.currentTarget.reset()
       setHasPhoto(false)
       setHasLocation(false)
-    } catch (err) {
+    } catch (err: any) {
       console.error(err)
-      // Ideally trigger a toast notification here
+      setError(err.message || 'An error occurred while posting.')
     } finally {
       setLoading(false)
     }
@@ -69,6 +72,13 @@ export default function CreatePost() {
             placeholder="What's happening nearby?" 
             rows={2}
           ></textarea>
+          
+          {error && (
+            <div className="mt-sm p-sm bg-error-container text-on-error-container rounded-lg text-label-sm font-label-md flex items-center gap-xs">
+              <span className="material-symbols-outlined text-[16px]">security</span>
+              {error}
+            </div>
+          )}
         </div>
       </div>
       <div className="flex items-center justify-between mt-md pt-md border-t border-outline-variant">

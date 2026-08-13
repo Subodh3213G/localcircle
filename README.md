@@ -1,5 +1,7 @@
 # LocalCircle
 
+**Live Deployment:** [https://localcircle-sy.vercel.app/](https://localcircle-sy.vercel.app/)
+
 LocalCircle is a modern, hyper-local community platform designed to connect verified residents within specific geographic boundaries (neighborhoods). It serves as a secure digital town square for local news, peer-to-peer marketplaces, business directories, and real-time emergency alerts.
 
 Built with **Next.js 14**, **Supabase**, **Zustand**, and a custom implementation of the **Material Design 3** styling system.

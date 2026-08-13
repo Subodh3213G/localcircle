@@ -23,6 +23,8 @@ export async function getFeedPosts(limit = 20) {
   return data
 }
 
+import { checkContentModeration } from '@/utils/ai-moderation'
+
 export async function createPost(formData: FormData) {
   const supabase = createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -31,6 +33,12 @@ export async function createPost(formData: FormData) {
   const title = formData.get('title') as string
   const content = formData.get('content') as string
   const category = formData.get('category') as string
+
+  // Run AI Moderation
+  const moderation = await checkContentModeration(`${title}\n${content}`)
+  if (!moderation.isSafe) {
+    throw new Error(`Content Blocked: ${moderation.reason}`)
+  }
 
   // We fetch the neighborhood_id from the user's profile to explicitly set it,
   // even though RLS checks this during insertion.
